@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import HomePage from '../ui/pages/Home';
-import VotingPage from '../ui/pages/Voting';
+import HomePage from 'ui/pages/Home';
+import VotingPage from 'ui/pages/Voting';
 
 const browserHistory = createBrowserHistory();
 
