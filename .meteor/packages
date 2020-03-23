@@ -24,3 +24,5 @@ static-html
 react-meteor-data
 accounts-google
 service-configuration
+fourseven:scss
+fortawesome:fontawesome

@@ -12,10 +12,6 @@ export const routes = () => (
     <Switch>
       <Route exact path="/" component={HomePage}/>
       <Route exact path="/voting" component={VotingPage}/>
-      {/* <Route exact path="/lists/:id" component={ListPageContainer}/>
-      <Route exact path="/signin" component={AuthPageSignIn}/>
-      <Route exact path="/join" component={AuthPageJoin}/> */}
-      {/* <Route component={NotFoundPage}/> */}
     </Switch>
   </Router>
 );
