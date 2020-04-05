@@ -5,7 +5,7 @@ import GoogleSignupButton from "ui/components/GoogleSignupButton";
 
 import "./Home.scss";
 
-export default class HelloWorld extends React.Component {
+export default class Home extends React.Component {
   render() {
     return (
       <DefaultLayout>

@@ -1,0 +1,147 @@
+.questions {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.lecture {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .lecture-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .lecture-about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 80%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .lecture-title {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 15px 0 10px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  .lecture-description {
+    word-break: break-all;
+    margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
+  .start-question {
+    .start-question-button {
+      font-size: 14px;
+
+      i {
+        padding-right: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      align-self: center;
+    }
+  }
+
+  .lecture-about-author {
+    color: #5fbbf8;
+  }
+
+  .lecture-vote {
+    border-left: 1px solid #ccc;
+    height: 100%;
+    padding: 0;
+  }
+}
+
+.question-list {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow-y: scroll;
+  height: auto;
+  margin-bottom: 30px;
+
+  .question {
+    word-wrap: break-word;
+    padding: 20px;
+    background-color: #fff8d8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .question-author {
+    font-size: 18ыpx;
+    margin-bottom: 10px;
+  }
+
+  .question-text {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 15px;
+  }
+
+  .question-published {
+    font-size: 11px;
+  }
+}
+
+.create-question-form {
+  display: flex;
+  flex-direction: column;
+
+  .create-question-text {
+    min-width: 300px;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+
+  .create-question-send {
+    align-self: center;
+
+    i {
+      padding-right: 20px;
+    }
+  }
+}

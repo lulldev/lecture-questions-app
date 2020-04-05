@@ -1,5 +1,5 @@
-# lecture-voting-app
- Demo application: Meteor.js + React
+# lecture-questions-app
+Demo application: Meteor.js + React
 
 settings.json:
 
