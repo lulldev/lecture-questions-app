@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { withTracker } from "meteor/react-meteor-data";
-import { Questions } from "../../api/questions/questions";
+import { Questions } from "api/questions/collection";
+
 import DefaultLayout from "ui/layouts/Default";
 import Modal from "ui/components/Modal";
 
 import "./Questions.scss";
 
-function QuestionsPage({ questions }) {
+function QuestionsPage({ questions, isQuestionsLoaded }) {
   const [isModalVisible, setModalVisibility] = useState(false);
-  console.log(questions);
+
   return (
     <DefaultLayout>
       <div className="questions">
@@ -34,17 +35,22 @@ function QuestionsPage({ questions }) {
             </div>
           </div>
         </div>
-        <div className="question-list">
-          {questions.map((question, index) => (
-            <div className="question" key={index}>
-              <div className="question-author">
-                От: <strong>{question.author}</strong>
+
+        {isQuestionsLoaded ? (
+          <div className="question-list">
+            {questions.map((question, index) => (
+              <div className="question" key={index}>
+                <div className="question-author">
+                  От: <strong>{question.author}</strong>
+                </div>
+                <div className="question-text">{question.text}</div>
+                <div className="question-published">5 минут назад</div>
               </div>
-              <div className="question-text">{question.text}</div>
-              <div className="question-published">5 минут назад</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          "Загрузка..."
+        )}
       </div>
 
       <Modal
@@ -75,7 +81,7 @@ export default withTracker(() => {
   const handle = Meteor.subscribe("Questions.all");
 
   return {
-    questionsLoading: !handle.ready(),
+    isQuestionsLoaded: handle.ready(),
     questions: Questions.find().fetch(),
   };
 })(QuestionsPage);
