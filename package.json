@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "4.0.0",
+    "classnames": "2.2.6",
     "moment": "2.24.0"
   }
 }

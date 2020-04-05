@@ -3,6 +3,6 @@ import { Questions } from "../collection.js";
 
 Meteor.publish("Questions.all", () => {
   return Questions.find({}, {
-    sort: { publishedAt: -1 }
+    sort: { publishedAt: 1 }
   });
 });

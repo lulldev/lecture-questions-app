@@ -1,8 +1,6 @@
 import SimpleSchema from "simpl-schema";
 
-const Schemas = {};
-
-Schemas.Questions = new SimpleSchema({
+export const QuestionsSchema = new SimpleSchema({
   author: {
     type: String,
     max: 200,
@@ -11,8 +9,14 @@ Schemas.Questions = new SimpleSchema({
     type: String,
     label: "Author",
   },
+  userId: {
+    type: String,
+    optional: true,
+  },
   publishedAt: {
     type: Date,
+    defaultValue: new Date(),
+    optional: true,
   },
   viewed: {
     type: Boolean,
@@ -23,4 +27,4 @@ Schemas.Questions = new SimpleSchema({
 
 export const Questions = new Mongo.Collection("questions");
 
-Questions.attachSchema(Schemas.Questions);
+Questions.attachSchema(QuestionsSchema);
