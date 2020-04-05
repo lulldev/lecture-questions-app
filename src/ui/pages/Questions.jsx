@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-
+import { withTracker } from "meteor/react-meteor-data";
+import { Questions } from "../../api/questions/questions";
 import DefaultLayout from "ui/layouts/Default";
 import Modal from "ui/components/Modal";
 
 import "./Questions.scss";
 
-export default function Questions() {
+function QuestionsPage({ questions }) {
   const [isModalVisible, setModalVisibility] = useState(false);
-
+  console.log(questions);
   return (
     <DefaultLayout>
       <div className="questions">
@@ -34,60 +35,15 @@ export default function Questions() {
           </div>
         </div>
         <div className="question-list">
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
+          {questions.map((question, index) => (
+            <div className="question" key={index}>
+              <div className="question-author">
+                От: <strong>{question.author}</strong>
+              </div>
+              <div className="question-text">{question.text}</div>
+              <div className="question-published">5 минут назад</div>
             </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
-            </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
-            </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
-            </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
-            </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
-          <div className="question">
-            <div className="question-author">
-              От: <strong>Ивана</strong>
-            </div>
-            <div className="question-text">
-              докладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописаниедокладаописание
-            </div>
-            <div className="question-published">5 минут назад</div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -114,3 +70,12 @@ export default function Questions() {
     </DefaultLayout>
   );
 }
+
+export default withTracker(() => {
+  const handle = Meteor.subscribe("Questions.all");
+
+  return {
+    questionsLoading: !handle.ready(),
+    questions: Questions.find().fetch(),
+  };
+})(QuestionsPage);
