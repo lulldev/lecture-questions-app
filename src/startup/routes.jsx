@@ -11,7 +11,9 @@ export const routes = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/questions" component={QuestionsPage} />
+      {Meteor.userId() && [
+        <Route exact path="/questions" component={QuestionsPage} />,
+      ]}
     </Switch>
   </Router>
 );

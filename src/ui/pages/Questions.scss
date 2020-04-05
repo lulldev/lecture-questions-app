@@ -73,10 +73,17 @@
   .start-question {
     .start-question-button {
       font-size: 14px;
+      margin-right: 5px;
 
       i {
         padding-right: 10px;
       }
+    }
+
+    .logout-button {
+      font-size: 14px;
+      background-color: #ff7a7a;
+      color: #fff;
     }
 
     @media (max-width: 768px) {

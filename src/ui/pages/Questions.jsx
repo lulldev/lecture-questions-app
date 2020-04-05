@@ -35,6 +35,12 @@ function QuestionsPage({ questions, isQuestionsLoaded }) {
                 <i className="fa fa-paper-plane create-question-send-icon"></i>
                 Задать вопрос
               </button>
+              <button
+                className="pure-button logout-button"
+                onClick={() => Meteor.logout()}
+              >
+                <i className="fa fa-power-off"></i>
+              </button>
             </div>
           </div>
         </div>
